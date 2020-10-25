@@ -109,14 +109,16 @@ break;
 case inc:
 tmp2 = PINC & 0x0F; 
 if (tmp2 < 0x08) { 
-PORTC = tmp2 + 0x01 ;
+++tmp2;
+PORTC = tmp2;
 }
 break;
 
 case dec:
 tmp2 = PINC & 0x0F;
 if (tmp2 > 0x01) {
-PORTC = tmp2 - 0x01;
+--tmp2;
+PORTC = tmp2;
 }
 break;
 
