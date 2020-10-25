@@ -13,7 +13,7 @@
 #endif
 
 enum States {start, wait, inc, dec, clr}  state;	
-unsigned char tmp=0x00;
+unsigned char tmp= 0x00;
 unsigned char tmp2 = 0x00;
 void Tick() {
 
@@ -24,35 +24,40 @@ state=wait;
 break;
 
 
-
-
 case wait: 
 tmp = PINA & 0x03;
+
 if (tmp==0x01)
 {	state = inc;}
+
 else if (tmp==0x02) 
 {	state = dec;}
+
 else if (tmp==0x03)
 {	state = clr;}
-else if (tmp=0x00)
+
+else if (tmp==0x00)
 {	state = wait;}
+
 break; 
    
-
-
-
-
-
 case inc: 
 tmp = PINA & 0x03;
-if (tmp==0x01)
+
+/*if (tmp==0x01)
 {  state = inc;}
 else if (tmp==0x02)
 {  state = dec;}
-else if (tmp==0x03)
+// else if (tmp==0x03)
+//{state = clr;}
+//else if (tmp==0x00)
+//{state = wait;}*/
+
+if (tmp==0x03)
 {state = clr;}
-else
-{state = wait;}
+else {
+state = wait;}
+
 break;
 
 
@@ -61,15 +66,20 @@ break;
 
 
 case dec:
+
 tmp = PINA & 0x03;
-if (tmp==0x01)
+/*
+ * if (tmp==0x01)
 { state = inc;}
 else if (tmp==0x02)
 { state = dec;}
-else if (tmp==0x03)
+*/
+
+if (tmp==0x03)
 {state = clr;}
-else
-{state = wait;}
+else {
+state = wait;}
+
 break; 
 
 
@@ -83,7 +93,7 @@ else if (tmp==0x02)
 { state = dec;}
 else if (tmp==0x03)
 { state = clr;}
-else
+else if (tmp == 0x00)
 { state = wait;}
 break;
 
@@ -99,16 +109,16 @@ case wait:
 break;
 
 case inc:
-tmp2 = PINC; 
+tmp2 = PINC & 0x0F; 
 if (tmp2 < 0x08) 
-{ tmp2++ ; }
+{ ++tmp2 ; }
 PORTC = tmp2;
 break;
 
 case dec:
-tmp2 = PINC;
+tmp2 = PINC & 0x0F;
 if (tmp2 > 0x01) {
-tmp2-- ; }
+--tmp2 ; }
 PORTC = tmp2;
 break;
 
