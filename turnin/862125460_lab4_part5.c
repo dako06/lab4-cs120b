@@ -65,11 +65,11 @@ case wait:
 
 tmp = PINA & 0x87;
 
-if (cnt<8) {
+if (cnt<7) {
 	input[cnt] = tmp;
 	cnt++; }
 
-else if (cnt==8) {
+else if (cnt==7) {
 	cnt=0; }
 
 break;
@@ -77,12 +77,12 @@ break;
 
 case read:
 
-for (i=0; i<8 ;i++) {
+for (i=0; i<7 ;i++) {
 	if (input[i] == code[i]) {
 		check++; }
 }
 
-result = (check == 8) ? ((~PINB) & 0x01) : PINB ;
+result = (check == 7) ? ((~PINB) & 0x01) : PINB ;
 PORTB = result;
 		
 break;
