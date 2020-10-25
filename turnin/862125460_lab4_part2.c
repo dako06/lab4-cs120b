@@ -28,13 +28,13 @@ break;
 
 case wait: 
 tmp = PINA & 0x03;
-if (PINA==0x01)
+if (tmp==0x01)
 {	state = inc;}
-else if (PINA==0x02) 
+else if (tmp==0x02) 
 {	state = dec;}
-else if (PINA==0x03)
+else if (tmp==0x03)
 {	state = clr;}
-else if (PINA=0x00)
+else if (tmp=0x00)
 {	state = wait;}
 break; 
    
