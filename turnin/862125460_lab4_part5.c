@@ -20,7 +20,7 @@ unsigned char check = 0x00;
 unsigned char result = 0x00;
 
 char code[] ={ 0x04, 0x00, 0x01, 0x00, 0x02, 0x00, 0x01};
-char input[7];
+char input[8];
 
 void Tick() {
 
@@ -35,7 +35,6 @@ case wait:
 tmp = PINA & 0x87;
 if (tmp== 0x80) {
 	state = lock; }
-
 else {
 	state = (cnt == 7) ? read : wait;
 }
@@ -66,8 +65,8 @@ case wait:
 
 tmp = PINA & 0x87;
 
-if (cnt<7) {
-	input[cnt] ={tmp};
+if (cnt<8) {
+	input[cnt] = tmp;
 	cnt++; }
 
 else if (cnt==8) {
@@ -78,14 +77,13 @@ break;
 
 case read:
 
-for (i=0; i<7 ;i++) {
+for (i=0; i<8 ;i++) {
 	if (input[i] == code[i]) {
-		++check; }
+		check++; }
 }
 
-if (check == 7) { 
-result = (~PINB) & 0x01;
-PORTB = result; }
+result = (check == 8) ? ((~PINB) & 0x01) : PINB ;
+PORTB = result;
 		
 break;
 
