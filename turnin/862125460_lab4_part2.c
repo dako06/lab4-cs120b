@@ -115,7 +115,7 @@ break;
 
 case dec:
 tmp2 = PINC & 0x0F;
-if (tmp2 > 0x00) {
+if (tmp2 > 0x01) {
 PORTC = tmp2 - 0x01;
 }
 break;
