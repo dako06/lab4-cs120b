@@ -48,7 +48,7 @@ if (tmp==0x80) {
 	state = lock; 
 }
 else {
-state = (cnt == 7) ? read : wait;
+state = (cnt == 8) ? read : wait;
 }
 
 break; 
@@ -84,7 +84,7 @@ for (i=0; i<7 ;i++) {
 		++check; }
 }
 
-if (check == 7) {
+if (check == 8) {
        result = (~PINB) & 0x01;
        PORTB = result;
 }
