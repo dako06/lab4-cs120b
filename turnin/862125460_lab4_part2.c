@@ -31,6 +31,7 @@ if (tmp==0x01) {
 	if (tmp2 < 0x08) {
 		++tmp2; 
 	}
+	PORTC = tmp2;
 	state = inc;
 }
 
@@ -38,6 +39,7 @@ else if (tmp==0x02) {
 	if (tmp2 > 0x01) {
 		--tmp2;
 	}
+	PORTC = tmp2;
 	state = dec;}
 
 else if (tmp==0x03) {
