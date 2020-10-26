@@ -28,7 +28,7 @@ case wait:
 tmp = PINA & 0x03;
 tmp2 = PINC & 0x0F;
 if (tmp==0x01) {
-	if (tmp2 < 0x08) {
+	if (tmp2 < 0x09) {
 		++tmp2; 
 	}
 	PORTC = tmp2;
